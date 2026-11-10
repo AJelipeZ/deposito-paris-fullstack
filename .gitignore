@@ -1,0 +1,20 @@
+# Dependencias y compilados
+node_modules/
+.angular/
+dist/
+bin/
+obj/
+
+# Base de datos local (se crea sola al ejecutar la API)
+*.db
+*.db-shm
+*.db-wal
+
+# Archivos generados
+*.zip
+Documentos/fuentes/_*.html
+
+# Sistema / editores
+.DS_Store
+.vs/
+*.user
