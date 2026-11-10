@@ -1,0 +1,29 @@
+@use '../../../variables' as *;
+
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.tarjeta {
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-top: 4px solid $naranja;
+}
+
+.tarjeta.alerta {
+  border-top-color: $rojo;
+}
+
+.numero {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.error {
+  color: $rojo;
+}

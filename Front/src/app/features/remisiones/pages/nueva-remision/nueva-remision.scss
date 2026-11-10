@@ -1,0 +1,39 @@
+.formulario {
+  padding: 20px;
+}
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  mat-form-field {
+    flex: 1 1 220px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+
+  mat-form-field {
+    flex: 1 1 120px;
+  }
+
+  .articulo {
+    flex: 3 1 250px;
+  }
+}
+
+.completo {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}

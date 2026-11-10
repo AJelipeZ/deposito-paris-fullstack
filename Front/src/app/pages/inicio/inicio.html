@@ -1,0 +1,27 @@
+<h1>Bienvenido</h1>
+<p>Sistema de despacho de mercancía de Depósito París.</p>
+
+@if (cargando) {
+  <app-spinner></app-spinner>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else {
+  <div class="tarjetas">
+    <mat-card class="tarjeta" routerLink="/remisiones">
+      <span class="numero">{{ resumen.pendientes }}</span>
+      <span>Pendientes</span>
+    </mat-card>
+    <mat-card class="tarjeta" routerLink="/remisiones">
+      <span class="numero">{{ resumen.despachadas }}</span>
+      <span>Despachadas</span>
+    </mat-card>
+    <mat-card class="tarjeta" routerLink="/remisiones">
+      <span class="numero">{{ resumen.entregadas }}</span>
+      <span>Entregadas</span>
+    </mat-card>
+    <mat-card class="tarjeta alerta" routerLink="/inventario">
+      <span class="numero">{{ resumen.articulosStockBajo }}</span>
+      <span>Artículos con poco stock</span>
+    </mat-card>
+  </div>
+}

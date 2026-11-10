@@ -1,0 +1,36 @@
+<div class="titulo">
+  <h1>Remisiones</h1>
+  <a mat-flat-button routerLink="/remisiones/nueva"><mat-icon>add</mat-icon> Nueva</a>
+</div>
+
+<div class="filtros">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar por cliente o número</mat-label>
+    <input matInput [formControl]="busqueda" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Estado</mat-label>
+    <mat-select [formControl]="filtroEstado">
+      <mat-option value="todos">Todos</mat-option>
+      <mat-option value="pendiente">Pendiente</mat-option>
+      <mat-option value="despachado">Despachado</mat-option>
+      <mat-option value="entregado">Entregado</mat-option>
+      <mat-option value="rechazado">Rechazado</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+@if (cargando) {
+  <app-spinner mensaje="Cargando remisiones..."></app-spinner>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else {
+  <div class="grid">
+    @for (remision of remisiones; track remision.id) {
+      <app-remision-card [remision]="remision" (ver)="verDetalle($event)"></app-remision-card>
+    } @empty {
+      <p>No se encontraron remisiones.</p>
+    }
+  </div>
+}

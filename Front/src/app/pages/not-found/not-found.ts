@@ -1,0 +1,10 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+@Component({
+  selector: 'app-not-found',
+  standalone: false,
+  styleUrl: './not-found.scss',
+  templateUrl: './not-found.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class NotFound {}

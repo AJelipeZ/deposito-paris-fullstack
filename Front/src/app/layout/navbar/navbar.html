@@ -1,0 +1,25 @@
+<mat-toolbar class="barra">
+  <a routerLink="/" class="logo">Depósito París</a>
+  <span class="espacio"></span>
+
+  <!-- Escritorio -->
+  <nav class="links">
+    @for (link of links; track link.ruta) {
+      <a mat-button [routerLink]="link.ruta" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">
+        {{ link.texto }}
+      </a>
+    }
+  </nav>
+
+  <!-- Celular -->
+  <button mat-icon-button class="menu-movil" [matMenuTriggerFor]="menu" aria-label="Menú">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    @for (link of links; track link.ruta) {
+      <a mat-menu-item [routerLink]="link.ruta">
+        <mat-icon>{{ link.icono }}</mat-icon>{{ link.texto }}
+      </a>
+    }
+  </mat-menu>
+</mat-toolbar>

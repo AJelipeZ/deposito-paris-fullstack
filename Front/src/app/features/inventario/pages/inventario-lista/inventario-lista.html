@@ -1,0 +1,20 @@
+<h1>Inventario</h1>
+
+<div class="filtros">
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar artículo o código</mat-label>
+    <input matInput [formControl]="busqueda" />
+  </mat-form-field>
+  <mat-chip-option [selected]="soloBajos.value" (selectionChange)="soloBajos.setValue($event.selected)">
+    Solo stock bajo
+  </mat-chip-option>
+</div>
+
+@if (cargando) {
+  <app-spinner mensaje="Cargando inventario..."></app-spinner>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else {
+  <p>{{ articulos.length }} artículo(s)</p>
+  <app-articulos-tabla [articulos]="articulos"></app-articulos-tabla>
+}

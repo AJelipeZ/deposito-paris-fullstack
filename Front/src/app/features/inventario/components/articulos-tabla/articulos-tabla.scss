@@ -1,0 +1,30 @@
+@use '../../../../../variables' as *;
+
+.contenedor {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.stock {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.ok {
+  background: #e8f5e9;
+  color: $verde;
+}
+
+.bajo {
+  background: #fff3e0;
+  color: $amarillo;
+}
+
+.agotado {
+  background: #ffebee;
+  color: $rojo;
+}

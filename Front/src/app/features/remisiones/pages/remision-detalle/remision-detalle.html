@@ -1,0 +1,61 @@
+<a mat-button routerLink="/remisiones"><mat-icon>arrow_back</mat-icon> Volver</a>
+
+@if (cargando) {
+  <app-spinner></app-spinner>
+} @else if (error || !remision) {
+  <p class="error">{{ error || 'No se encontró la remisión.' }}</p>
+} @else {
+  <mat-card class="detalle">
+    <h1>Remisión N° {{ remision.id }}</h1>
+    <p><strong>Cliente:</strong> {{ remision.cliente }}</p>
+    <p><strong>Teléfono:</strong> {{ remision.telefono }}</p>
+    <p><strong>Fecha:</strong> {{ remision.fecha }}</p>
+    <p><strong>Conductor:</strong> {{ remision.conductor }}</p>
+    <p><strong>Estado:</strong> {{ remision.estado | estado }}</p>
+    @if (remision.observaciones) {
+      <p><strong>Observaciones:</strong> {{ remision.observaciones }}</p>
+    }
+
+    <div class="tabla">
+      <table mat-table [dataSource]="remision.items">
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Artículo</th>
+          <td mat-cell *matCellDef="let item">{{ item.descripcion }}</td>
+        </ng-container>
+        <ng-container matColumnDef="cantidad">
+          <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+          <td mat-cell *matCellDef="let item">{{ item.cantidad }}</td>
+        </ng-container>
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef>Precio</th>
+          <td mat-cell *matCellDef="let item">{{ item.precio | cop }}</td>
+        </ng-container>
+        <ng-container matColumnDef="subtotal">
+          <th mat-header-cell *matHeaderCellDef>Subtotal</th>
+          <td mat-cell *matCellDef="let item">{{ item.subtotal | cop }}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+        <tr mat-row *matRowDef="let fila; columns: columnas"></tr>
+      </table>
+    </div>
+    <p class="total">Total: {{ remision.total | cop }}</p>
+
+    <!-- Botones según el estado actual -->
+    <div class="acciones">
+      @if (remision.estado === 'pendiente') {
+        <button mat-flat-button (click)="cambiarEstado('despachado')" [disabled]="guardando">Despachar</button>
+      }
+      @if (remision.estado === 'despachado') {
+        <button mat-flat-button (click)="cambiarEstado('entregado')" [disabled]="guardando">Marcar entregado</button>
+      }
+      @if (remision.estado === 'pendiente' || remision.estado === 'despachado') {
+        <button mat-stroked-button color="warn" (click)="cambiarEstado('rechazado')" [disabled]="guardando">
+          Rechazar
+        </button>
+      }
+    </div>
+    @if (guardando) {
+      <app-spinner mensaje="Guardando..."></app-spinner>
+    }
+  </mat-card>
+}

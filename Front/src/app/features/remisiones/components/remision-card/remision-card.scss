@@ -1,0 +1,48 @@
+@use '../../../../../variables' as *;
+
+.card {
+  padding: 16px;
+  height: 100%;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h3 {
+  margin: 8px 0 4px;
+}
+
+p {
+  margin: 4px 0;
+  color: #555;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.estado {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.pendiente {
+  background: $amarillo;
+}
+
+.despachado {
+  background: #1565c0;
+}
+
+.entregado {
+  background: $verde;
+}
+
+.rechazado {
+  background: $rojo;
+}

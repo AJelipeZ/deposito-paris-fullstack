@@ -1,0 +1,40 @@
+@use '../../../variables' as *;
+
+.barra {
+  background: $gris-oscuro;
+  color: white;
+  border-bottom: 3px solid $naranja;
+}
+
+.logo {
+  color: $naranja;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.espacio {
+  flex: 1;
+}
+
+.links a {
+  color: white;
+}
+
+.links .activo {
+  color: $naranja;
+}
+
+.menu-movil {
+  display: none;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .links {
+    display: none;
+  }
+
+  .menu-movil {
+    display: inline-flex;
+  }
+}
